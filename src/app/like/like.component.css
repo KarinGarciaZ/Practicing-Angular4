@@ -1,0 +1,9 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.glyphicon{
+    color: green;
+}
+
+.glyphicon-star{
+    background: blue;
+}

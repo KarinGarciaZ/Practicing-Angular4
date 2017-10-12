@@ -1,0 +1,10 @@
+
+
+<div *ngIf = "isActive">
+  <span (click) = "toggle()" [style.visibility] = "isActive ? 'visible' : 'hidden' " class="glyphicon glyphicon-star"></span>  
+</div>
+<div *ngIf = "!isActive">
+  <span (click) = "toggle()" [style.visibility] = "!isActive ? 'visible' : 'hidden' " class="glyphicon glyphicon-star-empty"></span>
+</div>
+
+<span class="glyphicon" [class.glyphicon-star] = "isActive" [class.glyphicon-star-empty] = "!isActive" (click) = "toggle()"></span>
