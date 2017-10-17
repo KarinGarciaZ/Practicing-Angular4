@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { SummaryPipe } from './summary.pipe';
 import { TeacherComponent } from './teacher.component';
@@ -20,6 +21,7 @@ import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { FormRetoComponent } from './form-reto/form-reto.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
+import { PostComponentComponent } from './post-component/post-component.component';
 
 @NgModule({
   declarations: [
@@ -38,12 +40,14 @@ import { NewCourseFormComponent } from './new-course-form/new-course-form.compon
     ContactFormComponent,
     FormRetoComponent,
     SignupFormComponent,
-    NewCourseFormComponent
+    NewCourseFormComponent,
+    PostComponentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule    
   ],
   providers: [
     CoursesService,

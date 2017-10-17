@@ -1,0 +1,10 @@
+<input type="text"
+class="form-control"
+(keyup.enter)="createPost(title)"
+#title>
+
+<ul>
+  <li *ngFor="let pos of posts">
+    {{pos | json}}
+  </li>
+</ul>
