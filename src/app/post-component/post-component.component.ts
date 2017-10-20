@@ -20,9 +20,6 @@ export class PostComponentComponent implements OnInit{
     this.service.getPosts()
     .subscribe(response =>{
       this.posts = response.json();
-    }, error =>{
-      alert('Something happened');
-      console.log(error);
     });
   }
 
@@ -36,10 +33,7 @@ export class PostComponentComponent implements OnInit{
       this.posts.splice(0,0,post);
     }, (error: AppError) =>{
       if (error instanceof BadInput){}
-      else{
-        alert('Error 404');
-        console.log(error);
-      }
+      else throw error;
     });
   }
 
@@ -48,23 +42,20 @@ export class PostComponentComponent implements OnInit{
       .subscribe(
         response =>{
           console.log(response.json());
-        }, 
-        (error: AppError) =>{
-          (error instanceof NotFoundError)? alert('Error 404'): alert('Something happened');
-          console.log(error);
-      });
+        });
   }
 
   deletePost(post){
-    this.service.deletePost(post.id)
+    this.service.deletePost(123)
       .subscribe(
         response =>{
           let index = this.posts.indexOf(post);
           this.posts.splice(index,1);
         }, 
         (error: AppError) =>{
-          (error instanceof NotFoundError)? alert('Error 404'): alert('Something happened');
-          console.log(error);
+          if (error instanceof NotFoundError)
+            alert('Error 404')
+          else throw error;
       });
   }
 }
