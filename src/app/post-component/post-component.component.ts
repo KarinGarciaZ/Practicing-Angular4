@@ -1,3 +1,6 @@
+import { BadInput } from './../common/bad-input';
+import { NotFoundError } from './../common/not-found-error';
+import { AppError } from './../common/app-error';
 import { PostService } from './../services/post.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -31,23 +34,24 @@ export class PostComponentComponent implements OnInit{
     .subscribe(response => {
       post['id'] = response.json().id;
       this.posts.splice(0,0,post);
-    }, (error: Response) =>{
-      if (error.status === 400){}
-        //this.form.setErrors(error.json());
-      else{        
-      alert('Something happened');
-      console.log(error);
+    }, (error: AppError) =>{
+      if (error instanceof BadInput){}
+      else{
+        alert('Error 404');
+        console.log(error);
       }
     });
   }
 
   updatePost(post){
     this.service.updatePost(post)
-      .subscribe(response =>{
-        console.log(response.json());
-      }, error =>{
-        alert('Something happened');
-        console.log(error);
+      .subscribe(
+        response =>{
+          console.log(response.json());
+        }, 
+        (error: AppError) =>{
+          (error instanceof NotFoundError)? alert('Error 404'): alert('Something happened');
+          console.log(error);
       });
   }
 
@@ -58,8 +62,8 @@ export class PostComponentComponent implements OnInit{
           let index = this.posts.indexOf(post);
           this.posts.splice(index,1);
         }, 
-        (error: Response) =>{
-          (error.status === 404)? alert('Error 404'): alert('Something happened');
+        (error: AppError) =>{
+          (error instanceof NotFoundError)? alert('Error 404'): alert('Something happened');
           console.log(error);
       });
   }
