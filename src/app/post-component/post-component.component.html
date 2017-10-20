@@ -4,7 +4,9 @@ class="form-control"
 #title>
 
 <ul>
-  <li *ngFor="let pos of posts">
+  <li *ngFor="let pos of posts" class="list-group-item">
+    <button (click)="updatePost(pos)" class="btn btn-default btn-sm">Update</button>
+    <button (click)="deletePost(pos)" class="btn btn-default btn-sm">Delete</button>
     {{pos | json}}
   </li>
 </ul>
