@@ -5,7 +5,7 @@ import { RetoDataService } from './retoData.service';
 @Injectable()
 export class RetoPostService extends RetoDataService {
   constructor(http: Http) {
-    super('https://api.github.com/users/mosh-hamedani/followers',http);
+    super('https://api.github.com/users/KarinGarciaZ/followers',http);
    }
 
 }

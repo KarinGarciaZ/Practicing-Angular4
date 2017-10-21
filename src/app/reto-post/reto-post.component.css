@@ -1,0 +1,14 @@
+.avatar{
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+}
+
+.col{
+    margin-top: 20px;
+}
+
+.info{
+    text-align: left;
+    padding-top: 50px;
+}

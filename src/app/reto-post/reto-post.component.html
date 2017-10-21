@@ -1,21 +1,12 @@
-
-<!-- <ul>
-  <li *ngFor="let pos of posts">    
-    {{pos.login}}  
-    {{pos.avatar_url}}
-    {{pos.html_url}}
-  </li>
-</ul> -->
-
 <div class="container">
   <div class="container" *ngFor="let pos of posts">
       <div class="row">
-          <div class="col-4">
-            <img src="{{pos.avatar_url}}" alt="">
+          <div class="col col-lg-4">
+            <img src="{{pos.avatar_url}}" class="avatar">
           </div>
-          <div class="col-8">
-            <h2>{{pos.login}} </h2>
-            <a href="{{pos.html_url}}">{{pos.html_url}}</a>
+          <div class="info col col-lg-8">
+            <h1>{{pos.login}}</h1>
+            <h3><a href="{{pos.html_url}}">{{pos.html_url}}</a></h3>            
           </div>
         </div>
   </div>
