@@ -27,6 +27,11 @@ import { FormRetoComponent } from './form-reto/form-reto.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { PostComponentComponent } from './post-component/post-component.component';
 import { RetoPostComponent } from './reto-post/reto-post.component';
+import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +52,24 @@ import { RetoPostComponent } from './reto-post/reto-post.component';
     SignupFormComponent,
     NewCourseFormComponent,
     PostComponentComponent,
-    RetoPostComponent
+    RetoPostComponent,
+    NavbarComponent,
+    HomeComponent,
+    GithubProfileComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule    
+    HttpModule,
+    RouterModule.forRoot([
+      { path: '',                    component: HomeComponent},
+      { path: 'followers/:username', component: GithubProfileComponent},
+      { path: 'followers',           component: RetoPostComponent},      
+      { path: 'posts',               component: PostComponentComponent},
+      { path: '**',                  component: NotFoundComponent}
+    ])
   ],
   providers: [
     CoursesService,
