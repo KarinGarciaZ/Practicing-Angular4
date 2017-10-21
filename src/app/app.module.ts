@@ -1,3 +1,4 @@
+import { RetoPostService } from './services/reto-post.service';
 import { AppErrorHandler } from './common/app-error-handler';
 import { ErrorHandler } from '@angular/core';
 import { PostService } from './services/post.service';
@@ -25,6 +26,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { FormRetoComponent } from './form-reto/form-reto.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { PostComponentComponent } from './post-component/post-component.component';
+import { RetoPostComponent } from './reto-post/reto-post.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { PostComponentComponent } from './post-component/post-component.componen
     FormRetoComponent,
     SignupFormComponent,
     NewCourseFormComponent,
-    PostComponentComponent
+    PostComponentComponent,
+    RetoPostComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ import { PostComponentComponent } from './post-component/post-component.componen
     AuthorServices,
     StudentsService,
     PostService,
+    RetoPostService,
     { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]

@@ -23,13 +23,15 @@ export class PostComponentComponent implements OnInit{
 
   createPost(input: HTMLInputElement){
     let post = {title: input.value};
+    this.posts.splice(0,0,post);
     input.value = '';
 
     this.service.create(post)
-    .subscribe(response => {
-      post['id'] = response.json().id;
-      this.posts.splice(0,0,post);
-    }, (error: AppError) =>{
+    .subscribe(newPost => 
+      post['id'] = newPost.id    
+    , 
+    (error: AppError) =>{
+      this.posts.splice(0,1);
       if (error instanceof BadInput){}
       else throw error;
     });
@@ -38,19 +40,19 @@ export class PostComponentComponent implements OnInit{
   updatePost(post){
     this.service.update(post)
       .subscribe(
-        response =>{
-          console.log(response.json());
+        updatedPost =>{
+          console.log(updatedPost);
         });
   }
 
   deletePost(post){
-    this.service.delete(123)
+    let index = this.posts.indexOf(post);
+    this.posts.splice(index,1);
+    this.service.delete(post.id)
       .subscribe(
-        response =>{
-          let index = this.posts.indexOf(post);
-          this.posts.splice(index,1);
-        }, 
+        null, 
         (error: AppError) =>{
+          this.posts.splice(index,0,post);
           if (error instanceof NotFoundError)
             alert('Error 404')
           else throw error;

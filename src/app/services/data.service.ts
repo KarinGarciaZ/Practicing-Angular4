@@ -21,16 +21,19 @@ export class DataService {
 
   create(resource){
     return this.http.post(this.url, JSON.stringify(resource))
+    .map(response => response.json())
     .catch(this.handleError);
   }
 
   update(resource){
     return this.http.patch(this.url + "/" + resource.id, JSON.stringify({ title: 'prro' }))
+    .map(response => response.json())
       .catch(this.handleError);
   }
 
-  delete(id){
+  delete(id){    
     return this.http.delete(this.url + "/" + id)
+    .map(response => response.json())
       .catch(this.handleError);     
   }
 
