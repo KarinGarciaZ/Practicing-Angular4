@@ -10,8 +10,7 @@ export class GithubProfileComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-    
+  ngOnInit() {    
   }
 
   submit(){
